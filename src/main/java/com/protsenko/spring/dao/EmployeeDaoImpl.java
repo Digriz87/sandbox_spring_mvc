@@ -16,6 +16,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
     private SessionFactory sessionFactory;
 
     @Override
+    public Employee getEmployee(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Employee employee = session.get(Employee.class, id);
+        return employee;
+    }
+
+    @Override
 
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
@@ -30,6 +37,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public void saveEmployee(Employee employee) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(employee);
+        session.saveOrUpdate(employee);
     }
 }
