@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
+
     @Autowired
     private EmployeeDao employeeDao;
 
@@ -31,5 +32,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     public Employee getEmployee(int id) {
         return employeeDao.getEmployee(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteEmployee(int id) {
+        employeeDao.deleteEmployee(id);
     }
 }
